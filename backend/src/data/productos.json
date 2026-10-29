@@ -6,9 +6,9 @@
     "stock": 12
   },
   {
-    "id": 2,
-    "nombre": "Test",
-    "precio": 125,
-    "stock": 4
+    "id": 3,
+    "nombre": "Nvidia 2060 Ti",
+    "precio": 260,
+    "stock": 12
   }
 ]

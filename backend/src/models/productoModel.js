@@ -26,7 +26,49 @@ export const registrarProducto = async (producto) => {
 
 export const buscarPorID = async (id) => {
     const productos = await listaProductos();
-    const producto = productos.fins(p => p.id === id);
+    const producto = productos.find(p => p.id === id);
 
     return producto;
 };
+
+export const actualizarProducto = async (id, datosActualizados) => {
+    const productos = await listaProductos();
+    const producto = productos.find(p => p.id === id);
+
+    if (!producto) {
+        return null;
+    }
+
+    producto.nombre = datosActualizados.nombre;
+    producto.precio = datosActualizados.precio;
+    producto.stock = datosActualizados.stock;
+
+    await writeFile(
+        archivo,
+        JSON.stringify(productos, null, 2),
+        "utf8"
+    );
+
+    return producto;
+}
+
+export const eliminarProducto = async (id) => {
+    const productos = await listaProductos();
+    const producto = productos.find(p => p.id === id);
+
+    if (!producto){
+        return false;
+    }
+
+    const productosActualizados = productos.filter(
+        p => p.id !== id
+    );
+
+    await writeFile(
+        archivo,
+        JSON.stringify(productosActualizados, null, 2),
+        "utf8"
+    );
+
+    return true;
+}
