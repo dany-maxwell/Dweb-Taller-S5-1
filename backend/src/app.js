@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('API Sistema de ventas mvc funcionando');
+    res.send('API Sistema de ventas mvc funcionando DANIEL OROZCO');
 });
 
 app.use('/api/productos', productoRoutes);
